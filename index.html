@@ -270,7 +270,7 @@
         navigator.geolocation.getCurrentPosition(function (position) {
           var userCoordinates = [position.coords.latitude, position.coords.longitude];
           var userMarker = L.marker(userCoordinates, { icon: L.divIcon({ className: 'user-marker', iconSize: [30, 30], html: 'You' }) }).addTo(map);
-          userMarker.bindPopup('당신의 위치').openPopup();
+          userMarker.bindPopup('You').openPopup();
           map.setView(userCoordinates, 15); // 사용자의 위치로 지도 이동 (15는 축적 값)
         }, function (error) {
           console.error('현재 위치를 가져오는 데 실패했습니다:', error);
