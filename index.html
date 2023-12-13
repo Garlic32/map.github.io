@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
     #map {
-      height: 400px;
+      height: 1400px;
     }
   </style>
 </head>
@@ -20,27 +20,34 @@
     // 서울의 좌표
     var seoulCoordinates = [37.5665, 126.9780];
 
-    // Leaflet을 사용하여 지도 초기화, 서울을 중심으로 5km 축적
-    var map = L.map('map').setView(seoulCoordinates, 13);
+    // Leaflet을 사용하여 지도 초기화, 서울을 중심으로 10km 축적
+    var map = L.map('map').setView(seoulCoordinates, 10);
 
     // OpenStreetMap 타일 레이어 추가
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-    // 예시 GeoJSON 데이터 (서울 시청 좌표 사용)
-    var geojsonFeature = {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [126.9780, 37.5665]
-      },
-      "properties": {
-        "name": "서울 시청",
-        "description": "서울의 중심"
-      }
-    };
+    // 좌표 데이터
+    var locations = [
+      [36.8264333, 128.6049139],
+      [37.486269, 126.5594044],
+      [35.1444473, 126.9136212],
+      [37.33438115, 126.8098922],
+      [37.8211939, 127.0946923],
+      [36.8114087, 127.1077223],
+      [37.5282029, 126.6708808],
+      [37.6178936, 126.9220735],
+      [37.757916, 127.0427453],
+      [37.610891, 127.0565335],
+      // ... (나머지 좌표 계속 추가)
+    ];
 
-    // GeoJSON 데이터를 Leaflet 마커로 추가
-    L.geoJSON(geojsonFeature).addTo(map);
+    // 마커를 담을 그룹 생성
+    var markers = L.layerGroup().addTo(map);
+
+    // 좌표를 이용하여 마커 생성 및 지도에 추가
+    locations.forEach(function (location) {
+      var marker = L.marker(location).addTo(markers);
+    });
   </script>
 </body>
 </html>
