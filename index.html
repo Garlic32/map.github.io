@@ -13,7 +13,12 @@
   </style>
 </head>
 <body>
+  <div>
+    <label for="search">마커 검색: </label>
+    <input type="text" id="search" placeholder="식당 이름 입력" oninput="searchMarkers()" />
+  </div>
   <div id="map"></div>
+  
   <!-- Leaflet JS 파일 -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
@@ -242,6 +247,20 @@
       marker.bindPopup(location.name); // 마커를 클릭하면 이름이 표시되도록 설정
       marker.getElement().style.backgroundColor = getRandomColor(); // 랜덤 색상 적용
     });
+
+
+    function searchMarkers() {
+      var searchInput = document.getElementById('search').value.toLowerCase();
+
+      markers.eachLayer(function (marker) {
+        var markerName = marker.getPopup().getContent().toLowerCase();
+        if (markerName.includes(searchInput)) {
+          marker.addTo(map);
+        } else {
+          map.removeLayer(marker);
+        }
+      });
+    }
   </script>
 </body>
 </html>
