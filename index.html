@@ -260,6 +260,19 @@
 
     // 페이지 로드 시 사용자의 위치를 가져와 지도에 표시
     showUserLocation();
+    
+    function searchMarkers() {
+      var searchInput = document.getElementById('search').value.toLowerCase();
+
+      markers.eachLayer(function (marker) {
+        var markerName = marker.getPopup().getContent().toLowerCase();
+        if (markerName.includes(searchInput)) {
+          marker.addTo(map);
+        } else {
+          map.removeLayer(marker);
+        }
+      });
+    }
   </script>
 </body>
 </html>
