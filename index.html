@@ -8,15 +8,21 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    #search-bar {
+      flex: 1;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
     #map {
-      height: 800px; width: 1600px;
-
-    /* 기본 스타일은 여기에 유지 */
-
-    /* 지도를 감싸는 div의 스타일 */
-    #map-container {
-      width: 100%; /* 초기에 전체 너비로 설정 */
-      height: 500px; /* 초기 높이 설정 */
+      flex: 2;
+      height: 500px; /* 원하는 높이로 조절하세요 */
     }
   </style>
 </head>
