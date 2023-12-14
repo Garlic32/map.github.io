@@ -10,6 +10,13 @@
   <style>
     #map {
       height: 800px; width: 1600px;
+
+    /* 기본 스타일은 여기에 유지 */
+
+    /* 지도를 감싸는 div의 스타일 */
+    #map-container {
+      width: 100%; /* 초기에 전체 너비로 설정 */
+      height: 500px; /* 초기 높이 설정 */
     }
   </style>
 </head>
@@ -247,6 +254,23 @@
         }
       });
     }
+
+    function adjustMapSize() {
+      var mapContainer = document.getElementById('map-container');
+      var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      var newHeight = Math.min(500, screenWidth * 0.8); // 최대 500px로 제한하거나, 화면 너비의 80%로 설정
+
+      mapContainer.style.height = newHeight + 'px';
+      map.invalidateSize(); // 지도 크기 갱신
+    }
+
+    // 초기 로드 시 화면 크기 조절
+    adjustMapSize();
+
+    // 화면 크기가 변경될 때 이벤트 리스너 등록
+    window.addEventListener('resize', adjustMapSize);
+
+  
   </script>
 </body>
 </html>
