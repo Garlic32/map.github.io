@@ -14,7 +14,12 @@
   </style>
 </head>
 <body>
+  <div>
+    <label for="search">마커 검색: </label>
+    <input type="text" id="search" placeholder="식당 이름 입력" oninput="searchMarkers()" />
+  </div>
   <div id="map"></div>
+
   <!-- Leaflet JS 파일 -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
@@ -212,55 +217,21 @@
       { name: '	강동 명일점'		, coordinates: [	37.553043	,	127.142694	] },
       { name: '	송파 풍납점'		, coordinates: [	37.531213	,	127.1181055	] },
       { name: '	춘천 퇴계점'		, coordinates: [	37.7624902	,	127.7107666	] }
-
-
-
-
-
-      
       // ... (나머지 좌표와 이름 계속 추가)
     ];
 
     // 마커를 담을 그룹 생성
     var markers = L.layerGroup().addTo(map);
 
+
     // 좌표와 이름을 이용하여 마커 생성 및 지도에 추가
     locations.forEach(function (location) {
       var marker = L.marker(location.coordinates).addTo(markers);
       marker.bindPopup(location.name); // 마커를 클릭하면 이름이 표시되도록 설정
+      marker.getElement().style.backgroundColor = getRandomColor(); // 랜덤 색상 적용
     });
-    function searchMarkers() {
-      var searchInput = document.getElementById('search').value.toLowerCase();
 
-      markers.eachLayer(function (marker) {
-        var markerName = marker.getPopup().getContent().toLowerCase();
-        if (markerName.includes(searchInput)) {
-          marker.addTo(map);
-        } else {
-          map.removeLayer(marker);
-        }
-      });
-    }
-
-    // 사용자의 현재 위치를 가져와 지도에 표시하는 함수
-    function showUserLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var userCoordinates = [position.coords.latitude, position.coords.longitude];
-          var userMarker = L.marker(userCoordinates, { icon: L.divIcon({ className: 'user-marker', iconSize: [30, 30], html: 'You' }) }).addTo(map);
-          userMarker.bindPopup('당신').openPopup();
-          map.setView(userCoordinates, 15); // 사용자의 위치로 지도 이동 (15는 축적 값)
-        }, function (error) {
-          console.error('현재 위치를 가져오는 데 실패했습니다:', error);
-        });
-      } else {
-        console.error('Geolocation이 지원되지 않습니다.');
-      }
-    }
-
-    // 페이지 로드 시 사용자의 위치를 가져와 지도에 표시
-    showUserLocation();
-    
+    // 검색 기능을 위한 함수
     function searchMarkers() {
       var searchInput = document.getElementById('search').value.toLowerCase();
 
