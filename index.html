@@ -223,32 +223,13 @@
 
     // 마커를 담을 그룹 생성
     var markers = L.layerGroup().addTo(map);
-  
-    // 랜덤 색상을 생성하는 함수
-    function getRandomColor() {
-      var letters = '0123456789ABCDEF';
-      var color = '#';
-      for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
+    
   
     // 좌표와 이름을 이용하여 마커 생성 및 지도에 추가
     locations.forEach(function (location) {
 
-      var garlicIcon = L.icon({
-        iconUrl: 'https://png.pngtree.com/png-clipart/20220124/ourmid/pngtree-3d-pin-map-marker-location-tilt-left-png-image_4362473.png',
-        shadowUrl: 'https://png.pngtree.com/png-clipart/20220124/ourmid/pngtree-3d-pin-map-marker-location-tilt-left-png-image_4362473.png',
-    
-        iconSize:     [23, 23], // size of the icon
-        shadowSize:   [23, 23], // size of the shadow
-        iconAnchor:   [23, 23], // point of the icon which will correspond to marker's location
-        shadowAnchor: [23, 23],  // the same for the shadow
-        popupAnchor:  [50, 50] // point from which the popup should open relative to the iconAnchor
-    });
       
-      var marker = L.marker(location.coordinates, { icon: garlicIcon}).addTo(markers);
+      var marker = L.marker(location.coordinates).addTo(markers);
       marker.bindPopup(location.name); // 마커를 클릭하면 이름이 표시되도록 설정
       marker.getElement().style.backgroundColor = getRandomColor(); // 랜덤 색상 적용
     });
