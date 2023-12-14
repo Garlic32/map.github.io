@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>서울 지도</title>
+  <title>마늘지도</title>
   <!-- Leaflet CSS 파일 -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
@@ -20,6 +20,7 @@
     #search {
       padding: 10px;
       box-sizing: border-box;
+      align-tiem: center;
 
     }
 
@@ -34,9 +35,8 @@
 <body>
   
   <div>
-    <label for="search">마커 검색: </label>
+    <label for="search"> 식당 검색: </label>
     <input type="text" id="search" placeholder="식당 이름 입력" oninput="searchMarkers()" />
-    justify-content: center;
   </div>
   
   <div id="map"></div>
