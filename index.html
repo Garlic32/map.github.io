@@ -234,10 +234,21 @@
     // 마커를 담을 그룹 생성
     var markers = L.layerGroup().addTo(map);
 
+    var garlicIcon = L.Icon.extend({
+        options: {
+            shadowUrl: 'https://i.pinimg.com/564x/e4/29/75/e4297527747a3f576a4cb81bbb15d4c9.jpg',
+            iconSize:     [38, 95],
+            shadowSize:   [50, 64],
+            iconAnchor:   [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor:  [-3, -76]
+        }
+    });
+
 
     // 좌표와 이름을 이용하여 마커 생성 및 지도에 추가
     locations.forEach(function (location) {
-      var marker = L.marker(location.coordinates).addTo(markers);
+      var marker = L.marker(location.coordinates, {icon: garlicIcon} ).addTo(markers);
       marker.bindPopup(location.name); // 마커를 클릭하면 이름이 표시되도록 설정
     });
 
