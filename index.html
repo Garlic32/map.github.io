@@ -217,7 +217,8 @@
       { name: '	강동 명일점'		, coordinates: [	37.553043	,	127.142694	] },
       { name: '	송파 풍납점'		, coordinates: [	37.531213	,	127.1181055	] },
       { name: '	춘천 퇴계점'		, coordinates: [	37.7624902	,	127.7107666	] }
-      // ... (나머지 좌표와 이름 계속 추가)
+
+      
     ];
 
     // 마커를 담을 그룹 생성
@@ -228,7 +229,6 @@
     locations.forEach(function (location) {
       var marker = L.marker(location.coordinates).addTo(markers);
       marker.bindPopup(location.name); // 마커를 클릭하면 이름이 표시되도록 설정
-      marker.getElement().style.backgroundColor = getRandomColor(); // 랜덤 색상 적용
     });
 
     // 검색 기능을 위한 함수
