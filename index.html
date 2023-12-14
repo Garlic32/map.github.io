@@ -18,8 +18,6 @@
     }
 
     #search {
-      display: flex;
-      justify-content: center;
       padding: 10px;
       box-sizing: border-box;
 
@@ -34,14 +32,19 @@
   </style>
 </head>
 <body>
+  
   <div>
     <label for="search">마커 검색: </label>
     <input type="text" id="search" placeholder="식당 이름 입력" oninput="searchMarkers()" />
+    justify-content: center;
   </div>
+  
   <div id="map"></div>
 
   <!-- Leaflet JS 파일 -->
+  
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  
   <script>
     // 서울의 좌표
     var seoulCoordinates = [37.5665, 126.9780];
