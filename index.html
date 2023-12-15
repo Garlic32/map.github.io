@@ -296,14 +296,11 @@
     window.addEventListener('resize', adjustMapSize);
 
     
-      marker.on('click', function () {
-        // 클릭 시 www.youtube.com으로 이동
-        window.location.href = 'https://www.youtube.com';
-      });
-    }
+    marker.on('click', function () {
+      window.location.href = 'https://www.youtube.com';
+    });
 
-    // initMap 함수를 호출하여 지도 초기화
-    initMap();
+
   
   </script>
 </body>
