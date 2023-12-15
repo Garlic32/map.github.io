@@ -252,15 +252,15 @@
     var markers = L.layerGroup().addTo(map);
 
     var customIcon = L.icon({
-        iconUrl: 'https://i.ibb.co/crdYdtD/Pngtree-hand-painted-hand-painted-garlic-3903659.png',
-        iconSize: [30, 30],
-        iconAnchor: [15, 42],
-        popupAnchor: [0, -42]
+      iconUrl: 'https://i.ibb.co/crdYdtD/Pngtree-hand-painted-hand-painted-garlic-3903659.png',
+      iconSize: [32, 32], // 아이콘 크기 조정
+      iconAnchor: [16, 32], // 마커의 중심을 설정
+      popupAnchor: [0, -32] // 팝업이 표시될 위치 설정
     });
 
     // 좌표와 이름을 이용하여 마커 생성 및 지도에 추가
     locations.forEach(function (location) {
-      var marker = L.marker(location.coordinates {icon: customIcon}).addTo(markers);
+      var marker = L.marker(location.coordinates, {icon: customIcon}).addTo(markers);
       marker.bindPopup(location.name); // 마커를 클릭하면 이름이 표시되도록 설정
     });
 
