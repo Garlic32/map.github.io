@@ -295,6 +295,15 @@
     // 화면 크기가 변경될 때 이벤트 리스너 등록
     window.addEventListener('resize', adjustMapSize);
 
+    
+      marker.on('click', function () {
+        // 클릭 시 www.youtube.com으로 이동
+        window.location.href = 'https://www.youtube.com';
+      });
+    }
+
+    // initMap 함수를 호출하여 지도 초기화
+    initMap();
   
   </script>
 </body>
