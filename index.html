@@ -284,7 +284,6 @@
           var userCoordinates = [position.coords.latitude, position.coords.longitude];
           var userMarker = L.marker(userCoordinates, { icon: pigIcon }).addTo(map);
           
-          userMarker.getElement().style.backgroundColor = red; // 랜덤 색상 적용
           
           userMarker.bindPopup('당신의 위치').openPopup();
           map.setView(userCoordinates, 16); // 사용자의 위치로 지도 이동 (15는 축적 값)
