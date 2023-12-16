@@ -294,13 +294,17 @@
 
     // 사용자의 현재 위치를 가져와 지도에 표시하는 함수
     function onLocationFound(e) {
+      navigator.geolocation.getCurrentPosition(function (position) {
         var radius = e.accuracy / 2;
+        var userCoordinates = [position.coords.latitude, position.coords.longitude];
+        var usermarker = L.marker(userCoordinates, {icon: pigIcon}).addTo(markers);
 
-        L.marker(e.latlng, {icon: pigIcon}).addTo(map)
+        L.marker(userCoordinates, {icon: pigIcon}).addTo(map)
             .bindPopup("You").openPopup();
 
-        L.circle(e.latlng, radius).addTo(map);
+        L.circle(userCoordinates, radius).addTo(map);
     }
+                                               }
 
     // 사용자의 위치를 얻는데 실패했을 때의 처리
     function onLocationError(e) {
