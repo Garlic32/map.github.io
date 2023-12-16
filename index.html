@@ -19,6 +19,7 @@
 
     #search {
       padding: 10px;
+      margin-left:  
       box-sizing: border-box;
       align-tiem: center;
 
@@ -253,8 +254,8 @@
 
     var customIcon = L.icon({
       iconUrl: 'https://i.ibb.co/crdYdtD/Pngtree-hand-painted-hand-painted-garlic-3903659.png',
-      iconSize: [32, 32], // 아이콘 크기 조정
-      iconAnchor: [16, 32], // 마커의 중심을 설정
+      iconSize: [40, 40], // 아이콘 크기 조정
+      iconAnchor: [18, 45], // 마커의 중심을 설정
       popupAnchor: [0, -32] // 팝업이 표시될 위치 설정
     });
 
@@ -300,6 +301,26 @@
 
       window.open('https://www.youtube.com', '_blank');
     });
+
+    function showUserLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          
+          var userCoordinates = [position.coords.latitude, position.coords.longitude];
+          var userMarker = L.marker(userCoordinates, { icon: L.divIcon({ className: 'user-marker', iconSize: [30, 30], html: '당신의 위치' }) }).addTo(map);
+          
+          userMarker.bindPopup('당신의 위치').openPopup();
+          map.setView(userCoordinates, 15); // 사용자의 위치로 지도 이동 (15는 축적 값)
+        }, function (error) {
+          console.error('현재 위치를 가져오는 데 실패했습니다:', error);
+        });
+      } else {
+        console.error('Geolocation이 지원되지 않습니다.');
+      }
+    }
+
+    // 페이지 로드 시 사용자의 위치를 가져와 지도에 표시
+    showUserLocation();
 
 
   
