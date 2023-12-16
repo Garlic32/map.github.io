@@ -300,9 +300,9 @@
           var userCoordinates = [position.coords.latitude, position.coords.longitude];
           var usermarker = L.marker(userCoordinates, {icon: pigIcon}).addTo(markers);
           var radius = e.accuracy / 2;
-          
-          usermarker.bindPopup('YOU').openPopup();
-          usermarker.bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+          usermarker.bindPopup('YOU');
+          usermarker.bindPopup("You are within " + radius + " meters from this point");
           
           L.circle(e.latlng, radius).addTo(map);
 
