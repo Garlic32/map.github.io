@@ -297,7 +297,7 @@
         var radius = e.accuracy / 2;
 
         L.marker(e.latlng, {icon: pigIcon}).addTo(map)
-            .bindPopup("You are within " + radius + " meters from this point").openPopup();
+            .bindPopup("You").openPopup();
 
         L.circle(e.latlng, radius).addTo(map);
     }
@@ -313,8 +313,7 @@
 
     map.locate({setView: true, maxZoom: 16});
 
-    // 페이지 로드 시 사용자의 위치를 가져와 지도에 표시
-    showUserLocation();
+
   </script>
 </body>
 </html>
