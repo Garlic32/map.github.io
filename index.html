@@ -283,6 +283,7 @@
 
       markers.eachLayer(function (marker) {
         var markerName = marker.getPopup().getContent().toLowerCase();
+        
         if (markerName.includes(searchInput)) {
           marker.addTo(map);
         } else {
@@ -297,11 +298,17 @@
         navigator.geolocation.getCurrentPosition(function (position) {
           
           var userCoordinates = [position.coords.latitude, position.coords.longitude];
-          
           var usermarker = L.marker(userCoordinates, {icon: pigIcon}).addTo(markers);
+          var radius = e.accuracy / 2;
           
           userMarker.bindPopup('YOU').openPopup();
+          userMarker.bindPopup("You are within " + radius + " meters from this point").openPopup();
+          
+          L.circle(e.latlng, radius).addTo(map);
+
+          
           map.setView(userCoordinates, 15); // 사용자의 위치로 지도 이동 (15는 축적 값)
+          
         }, function (error) {
           console.error('현재 위치를 가져오는 데 실패했습니다:', error);
         });
