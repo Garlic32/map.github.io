@@ -293,32 +293,37 @@
     }
 
     // 사용자의 현재 위치를 가져와 지도에 표시하는 함수
-    function showUserLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          
-          var userCoordinates = [position.coords.latitude, position.coords.longitude];
-          var usermarker = L.marker(userCoordinates, {icon: pigIcon}).addTo(markers);
+    function onLocationFound(e) {
+        var radius = e.accuracy / 2;
 
-
-          usermarker.bindPopup('YOU');
-          usermarker.bindPopup("You are within " + radius + " meters from this point");
-          
-          L.circle(e.latlng, radius).addTo(map);
-
-          
-          map.setView(userCoordinates, 15); // 사용자의 위치로 지도 이동 (15는 축적 값)
-          
-        }, function (error) {
-          console.error('현재 위치를 가져오는 데 실패했습니다:', error);
+        // 기존의 마커 및 원 제거
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker || layer instanceof L.Circle) {
+                map.removeLayer(layer);
+            }
         });
-      } else {
-        console.error('Geolocation이 지원되지 않습니다.');
-      }
+
+        L.marker(e.latlng, {icon : pigIcon}).addTo(map)
+            .bindPopup("You").openPopup();
+
+        L.circle(e.latlng, radius).addTo(map);
+
+        // 위치를 찾을 때마다 맵의 센터를 사용자의 위치로 조정
+        map.setView(e.latlng);
     }
 
-    // 페이지 로드 시 사용자의 위치를 가져와 지도에 표시
-    showUserLocation();
+    function onLocationError(e) {
+        alert(e.message);
+    }
+
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+
+    map.locate({setView: true, maxZoom: 16});
+</script>
+
+</body>
+</html>
 
 
   </script>
