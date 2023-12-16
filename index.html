@@ -254,9 +254,9 @@
 
     var customIcon = L.icon({
       iconUrl: 'https://i.ibb.co/crdYdtD/Pngtree-hand-painted-hand-painted-garlic-3903659.png',
-      iconSize: [40, 40], // 아이콘 크기 조정
-      iconAnchor: [18, 45], // 마커의 중심을 설정
-      popupAnchor: [0, -32] // 팝업이 표시될 위치 설정
+      iconSize: [23, 23], // 아이콘 크기 조정
+      iconAnchor: [9, 45], // 마커의 중심을 설정
+      popupAnchor: [0, -40] // 팝업이 표시될 위치 설정
     });
 
     var pigIcon = L.icon({
@@ -301,8 +301,8 @@
           var usermarker = L.marker(userCoordinates, {icon: pigIcon}).addTo(markers);
           var radius = e.accuracy / 2;
           
-          userMarker.bindPopup('YOU').openPopup();
-          userMarker.bindPopup("You are within " + radius + " meters from this point").openPopup();
+          usermarker.bindPopup('YOU').openPopup();
+          usermarker.bindPopup("You are within " + radius + " meters from this point").openPopup();
           
           L.circle(e.latlng, radius).addTo(map);
 
