@@ -259,6 +259,7 @@
       var marker = L.marker(location.coordinates, { icon: customIcon }).addTo(markers);
       marker.bindPopup(location.name); // 마커를 클릭하면 이름이 표시되도록 설정
       marker.getElement().style.backgroundColor = getRandomColor(); // 랜덤 색상 적용
+      
     });
 
     // 검색 기능을 위한 함수
@@ -279,10 +280,14 @@
     function showUserLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
+          
           var userCoordinates = [position.coords.latitude, position.coords.longitude];
           var userMarker = L.marker(userCoordinates, { icon: pigIcon }).addTo(map);
+          
+          userMarker.getElement().style.backgroundColor = red; // 랜덤 색상 적용
+          
           userMarker.bindPopup('당신의 위치').openPopup();
-          map.setView(userCoordinates, 15); // 사용자의 위치로 지도 이동 (15는 축적 값)
+          map.setView(userCoordinates, 16); // 사용자의 위치로 지도 이동 (15는 축적 값)
         }, function (error) {
           console.error('현재 위치를 가져오는 데 실패했습니다:', error);
         });
