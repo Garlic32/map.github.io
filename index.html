@@ -3,19 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>현재 위치 지도</title>
+  <title>인천과학영재학교</title>
   <!-- Leaflet CSS 파일 -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
+    
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+    
+    .title {
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+    }
+    
     #map {
       height: 800px;
       margin-top: 20px;
-    }
 
     
   </style>
 </head>
 <body>
+
+  <div class="title">인천과학영재학교</div>
+
+
   <div>
     <label for="search">마커 검색: </label>
     <input type="text" id="search" placeholder="식당 이름 입력" oninput="searchMarkers()" />
