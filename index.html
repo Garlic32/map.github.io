@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> 마늘나라 </title>
+  <title> 마늘지도 </title>
   <!-- Leaflet CSS 파일 -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
@@ -16,8 +16,7 @@
       font-size: 24px;
       text-align: center;
       font-weight: bold;
-      line-height: 1; /* 줄 간격 설정 (현재 글꼴 크기의 1.5배) */
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     
     #map {
@@ -28,6 +27,7 @@
     p {
       font-family: 'Arial', sans-serif;
       font-size: 16px; /* 글꼴 크기 설정 */
+      font-weight: bold;
       line-height: 1.5; /* 줄 간격 설정 (현재 글꼴 크기의 1.5배) */
       color: #f00; /* 텍스트 색상 설정 */
     }
@@ -40,11 +40,11 @@
   <div class="title"> 마늘을 사랑하는 가게들이 </div>
   <div class="title"> 생각보다 마늘지도? </div>
   
-  <p> 웹 개발자를 구하고 있습니다. 010-2222-2222 </p>
+  <p> <u>웹 개발자를 구하고 있습니다. 010-2222-2222 </u> </p>
 
 
   <div>
-    <label for="search"> 마늘 구워주는 가게 검색 : </label>
+    <label for="search"> 마늘을 사랑하는 가게 검색 : </label>
     <input type="text" id="search" placeholder="식당 이름 입력" oninput="searchMarkers()" />
   </div>
   <div id="map"></div>
