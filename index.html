@@ -9,7 +9,10 @@
   <style>
     #map {
       height: 800px;
+      margin-top: 20px;
     }
+
+    
   </style>
 </head>
 <body>
@@ -239,9 +242,9 @@
 
     var pigIcon = L.icon({
       iconUrl: 'https://i.ibb.co/BsmPSkg/1702772959484.png',
-      iconSize: [30, 30], // 아이콘 크기 조정
-      iconAnchor: [14, 30], // 마커의 중심을 설정
-      popupAnchor: [0, -30] // 팝업이 표시될 위치 설정
+      iconSize: [50, 50], // 아이콘 크기 조정
+      iconAnchor: [25,25], // 마커의 중심을 설정
+      popupAnchor: [-2, -23] // 팝업이 표시될 위치 설정
     });
 
     // 랜덤 색상을 생성하는 함수
@@ -286,7 +289,7 @@
           
           
           userMarker.bindPopup('당신의 위치').openPopup();
-          map.setView(userCoordinates, 16); // 사용자의 위치로 지도 이동 (15는 축적 값)
+          map.setView(userCoordinates, 12); // 사용자의 위치로 지도 이동 (15는 축적 값)
         }, function (error) {
           console.error('현재 위치를 가져오는 데 실패했습니다:', error);
         });
